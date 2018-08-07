@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   get '/logout' => 'logout#logout'
   root 'home#show'
+
+  get '/auth/:provider/callback', to: 'firebase#callback'
+  # delete '/', to: 'home#signout'
 end

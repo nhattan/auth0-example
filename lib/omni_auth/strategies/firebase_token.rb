@@ -16,8 +16,6 @@ module OmniAuth
         decoded_token = decode(id_token)
         verify(decoded_token)
         super
-
-        auth0-example
       end
 
       uid do
@@ -34,7 +32,6 @@ module OmniAuth
         verified_token
       end
 
-
       CLIENT_CERT_URL = 'https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com'
 
       def certificates
@@ -46,9 +43,11 @@ module OmniAuth
 
       def decode(id_token)
         # see https://github.com/royfall/ruby_firebase_verify/blob/master/lib/ruby_firebase_verify.rb
-        jwt_header = JSON.parse(Base64.decode64(id_token.split('.').first)) # 自前でやらなくてもいいはず。。
-        raise 'Certificate not found' unless certificates.key?(jwt_header['kid'])
-        x509 = OpenSSL::X509::Certificate.new(certificates[jwt_header['kid']])
+        # 自前でやらなくてもいいはず。。
+        jwt_header = JSON.parse(Base64.decode64(id_token.split('.').first))
+        jwt_header_kid = jwt_header['kid']
+        raise 'Certificate not found' unless certificates.key?(jwt_header_kid)
+        x509 = OpenSSL::X509::Certificate.new(certificates[jwt_header_kid])
         JWT.decode(id_token, x509.public_key, true, { algorithm: jwt_header['alg'], verify_iat: false }) # もう少し検証項目増やす
       end
 
@@ -60,4 +59,5 @@ module OmniAuth
     end
   end
 end
+
 OmniAuth.config.add_camelization 'firebasetoken', 'FirebaseToken'

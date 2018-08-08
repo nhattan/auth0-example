@@ -1,13 +1,12 @@
 class FirebaseController < ApplicationController
   # GET /auth/:provider/callback?id_token=xxx
   def callback
-    byebug
-    session[:auth] = auth_hash
+    session[:userinfo] = auth_hash
     redirect_to '/'
   end
 
   def signout
-    session[:auth] = nil
+    session[:userinfo] = nil
     redirect_to '/'
   end
 

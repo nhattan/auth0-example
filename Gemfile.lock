@@ -85,6 +85,8 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -226,8 +228,10 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
+  jwt
   listen (>= 3.0.5, < 3.2)
   omniauth (~> 1.6.1)
   omniauth-auth0 (~> 2.0.0)

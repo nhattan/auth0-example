@@ -9,19 +9,20 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
-  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "<%= ENV['FIREBASE_API_KEY'] %>",
-        authDomain: "fir-web-example.firebaseapp.com",
-        databaseURL: "https://fir-web-example.firebaseio.com",
-        projectId: "fir-web-example",
-        storageBucket: "",
-        messagingSenderId: "710143024771"
-      };
-      firebase.initializeApp(config);
-    </script>
+
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "<%= ENV['FIREBASE_API_KEY'] %>",
+    authDomain: "fir-web-example.firebaseapp.com",
+    databaseURL: "https://fir-web-example.firebaseio.com",
+    projectId: "fir-web-example",
+    storageBucket: "fir-web-example.appspot.com",
+    messagingSenderId: "710143024771"
+  };
+  firebase.initializeApp(config);
+</script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
